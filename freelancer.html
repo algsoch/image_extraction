@@ -1,0 +1,2281 @@
+\freelancer.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft Studios | WordPress Expert in India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2b59c3;
+            --primary-dark: #1e3c8a;
+            --secondary: #ff7846;
+            --light: #f5f9ff;
+            --dark: #232434;
+            --gray: #8b8b9a;
+            --light-gray: #f2f2f2;
+            --success: #4caf50;
+            --danger: #f44336;
+            --border-radius: 6px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utilities */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            transition: var(--transition);
+            font-size: 16px;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: #e66234;
+            border-color: #e66234;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            color: var(--secondary);
+            margin-right: 8px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .active a {
+            color: var(--primary);
+        }
+
+        .nav-links .active a::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--dark);
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: var(--transition);
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+
+        .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+            top: 9px;
+        }
+
+        .hamburger span:nth-child(4) {
+            top: 18px;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .hamburger.open span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .hamburger.open span:nth-child(4) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            padding: 20px;
+            z-index: 999;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav.open {
+            transform: translateY(0);
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .mobile-nav-links li {
+            margin: 20px 0;
+        }
+
+        .mobile-nav-links a {
+            color: var(--dark);
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+            padding-left: 10px;
+        }
+
+        .mobile-nav-footer {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--light) 0%, #e6ecf7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 50%;
+            z-index: 0;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            margin-top: 50px;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-text {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="#" class="logo">
+                <i class="fas fa-laptop-code logo-icon"></i>
+                Web<span>Craft</span>
+            </a>
+            <div class="mobile-nav-close" id="mobileNavClose">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+            <a href="#contact" class="btn btn-primary" style="width: 100%;">Start a Project</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-laptop-code logo-icon"></i>
+                    Web<span>Craft</span>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Start a Project</a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>WordPress Websites That Grow Your Business</h1>
+                <p>I craft stunning, responsive WordPress websites that convert visitors into customers. With expertise in Elementor and custom theme development, I deliver websites that stand out.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="projectsCount">0</div>
+                        <div class="stat-text">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="clientsCount">0</div>
+                        <div class="stat-text">Happy Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="experienceCount">0</div>
+                        <div class="stat-text">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.ibb.co/SrNXBrL/wordpress-development.png" alt="WordPress Development">
+            </div>
+        </div>
+    </section>
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>My Services</h2>
+                    <p>I offer comprehensive WordPress solutions tailored to your specific needs</p>
+                </div>
+                <div class="services-container">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>WordPress Design</h3>
+                        <p>Custom WordPress website design that reflects your brand identity and engages your visitors.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Responsive layouts</li>
+                            <li><i class="fas fa-check"></i> User-friendly navigation</li>
+                            <li><i class="fas fa-check"></i> Brand-aligned aesthetics</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Theme Development</h3>
+                        <p>Custom WordPress theme development that provides unique functionality and appearance.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Custom page templates</li>
+                            <li><i class="fas fa-check"></i> Unique website features</li>
+                            <li><i class="fas fa-check"></i> Fast loading speeds</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fab fa-elementor"></i>
+                        </div>
+                        <h3>Elementor Pro</h3>
+                        <p>Expert Elementor Pro implementation for stunning page layouts and interactive elements.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Advanced layouts</li>
+                            <li><i class="fas fa-check"></i> Animations & effects</li>
+                            <li><i class="fas fa-check"></i> Custom widgets</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>WooCommerce</h3>
+                        <p>E-commerce websites built with WooCommerce that help you sell products and services online.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Product catalog setup</li>
+                            <li><i class="fas fa-check"></i> Payment gateway integration</li>
+                            <li><i class="fas fa-check"></i> Order management</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>SEO Optimization</h3>
+                        <p>WordPress SEO optimization to improve your website's visibility in search engine results.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> On-page optimization</li>
+                            <li><i class="fas fa-check"></i> Performance tuning</li>
+                            <li><i class="fas fa-check"></i> SEO plugins setup</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Maintenance & Support</h3>
+                        <p>Ongoing WordPress maintenance and support to keep your website secure and up-to-date.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Regular updates</li>
+                            <li><i class="fas fa-check"></i> Security monitoring</li>
+                            <li><i class="fas fa-check"></i> Technical support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>My Portfolio</h2>
+                    <p>Take a look at some of my recent WordPress projects</p>
+                </div>
+                <div class="portfolio-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="business">Business</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                    <button class="filter-btn" data-filter="blog">Blog</button>
+                    <button class="filter-btn" data-filter="portfolio">Portfolio</button>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="business">
+                        <div class="portfolio-image">
+                            <img src="https://i.ibb.co/NFfMxQR/portfolio-1.jpg" alt="Business Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h3>Corporate Website</h3>
+                                    <p>Business, WordPress, Elementor</p>
+                                    <a href="#" class="portfolio-link">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="ecommerce">
+                        <div class="portfolio-image">
+                            <img src="https://i.ibb.co/LQ5rV33/portfolio-2.jpg" alt="E-commerce Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h3>Fashion Store</h3>
+                                    <p>E-commerce, WooCommerce</p>
+                                    <a href="#" class="portfolio-link">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="blog">
+                        <div class="portfolio-image">
+                            <img src="https://i.ibb.co/MPrT9fn/portfolio-3.jpg" alt="Blog Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h3>Travel Blog</h3>
+                                    <p>Blog, WordPress</p>
+                                    <a href="#" class="portfolio-link">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="portfolio">
+                        <div class="portfolio-image">
+                            <img src="https://i.ibb.co/R24ffK9/portfolio-4.jpg" alt="Portfolio Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h3>Photographer Portfolio</h3>
+                                    <p>Portfolio, Elementor Pro</p>
+                                    <a href="#" class="portfolio-link">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="business">
+                        <div class="portfolio-image">
+                            <img src="https://i.ibb.co/YkKts9L/portfolio-5.jpg" alt="Business Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h3>Consulting Firm</h3>
+                                    <p>Business, WordPress</p>
+                                    <a href="#" class="portfolio-link">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="ecommerce">
+                        <div class="portfolio-image">
+                            <img src="https://i.ibb.co/FgdGrwJ/portfolio-6.jpg" alt="E-commerce Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h3>Electronics Store</h3>
+                                    <p>E-commerce, WooCommerce</p>
+                                    <a href="#" class="portfolio-link">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-cta">
+                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                </div>
+            </div>
+        </section>
+            <!-- Process Section -->
+    <section id="process" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Work Process</h2>
+                <p>How I approach every WordPress project to ensure success</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-comments"></i>
+                        <span class="process-number">1</span>
+                    </div>
+                    <div class="process-content">
+                        <h3>Consultation</h3>
+                        <p>We'll discuss your project requirements, goals, target audience, and any specific features you need for your WordPress website.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <span class="process-number">2</span>
+                    </div>
+                    <div class="process-content">
+                        <h3>Planning & Design</h3>
+                        <p>I'll create a detailed project plan and design mockups for your approval, ensuring the visual direction meets your brand guidelines.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-code"></i>
+                        <span class="process-number">3</span>
+                    </div>
+                    <div class="process-content">
+                        <h3>Development</h3>
+                        <p>I'll build your WordPress website with clean code, implementing all the features and functionality you require.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-vial"></i>
+                        <span class="process-number">4</span>
+                    </div>
+                    <div class="process-content">
+                        <h3>Testing & Review</h3>
+                        <p>Your website will undergo thorough testing for functionality, responsiveness, and performance before you review it.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-rocket"></i>
+                        <span class="process-number">5</span>
+                    </div>
+                    <div class="process-content">
+                        <h3>Launch</h3>
+                        <p>After your approval, I'll deploy your website to your hosting, ensuring everything is properly set up and working as expected.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-life-ring"></i>
+                        <span class="process-number">6</span>
+                    </div>
+                    <div class="process-content">
+                        <h3>Support</h3>
+                        <p>I provide ongoing support and maintenance to ensure your WordPress website continues to perform optimally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>What my clients have to say about my WordPress services</p>
+            </div>
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <div class="testimonial-item active">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>Working with WebCraft Studios was an excellent experience. The website they created for my business exceeded my expectations. Their attention to detail and expertise in WordPress made the entire process smooth.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="testimonial-image">
+                        <div class="testimonial-info">
+                            <h4>Rajesh Sharma</h4>
+                            <p>CEO, TechSolutions India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>I've worked with several web designers in the past, but WebCraft Studios stands out. They delivered a stunning e-commerce website that has significantly increased my sales. The site is fast, responsive, and very user-friendly.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="testimonial-image">
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <p>Owner, Elegance Boutique</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>The WordPress blog they created for my travel company has been a game-changer. It's beautifully designed, easy to update, and the SEO implementation has helped us rank much higher in search results. Highly recommended!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client" class="testimonial-image">
+                        <div class="testimonial-info">
+                            <h4>Vikram Singh</h4>
+                            <p>Founder, Explore India Tours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="testimonial-prev" id="testimonialPrev"><i class="fas fa-arrow-left"></i></button>
+                <div class="testimonial-dots" id="testimonialDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="testimonial-next" id="testimonialNext"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pricing Plans</h2>
+                <p>Affordable WordPress website solutions for every budget</p>
+            </div>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">14,999</span>
+                        </div>
+                        <p>Perfect for small businesses just getting started</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 5 Page WordPress Website</li>
+                            <li><i class="fas fa-check"></i> Responsive Design</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                            <li><i class="fas fa-check"></i> Social Media Integration</li>
+                            <li><i class="fas fa-check"></i> 1 Month Support</li>
+                            <li class="not-included"><i class="fas fa-times"></i> E-commerce Functionality</li>
+                            <li class="not-included"><i class="fas fa-times"></i> Custom Animations</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="featured-label">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Business</h3>
+                        <div class="pricing-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">24,999</span>
+                        </div>
+                        <p>Ideal for growing businesses with specific needs</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 10 Page WordPress Website</li>
+                            <li><i class="fas fa-check"></i> Responsive Design</li>
+                            <li><i class="fas fa-check"></i> Advanced Contact Forms</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO Setup</li>
+                            <li><i class="fas fa-check"></i> Social Media Integration</li>
+                            <li><i class="fas fa-check"></i> 3 Months Support</li>
+                            <li><i class="fas fa-check"></i> Blog Setup</li>
+                            <li><i class="fas fa-check"></i> Custom Animations</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>E-commerce</h3>
+                        <div class="pricing-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">39,999</span>
+                        </div>
+                        <p>Complete solution for online stores</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Full E-commerce Website</li>
+                            <li><i class="fas fa-check"></i> Responsive Design</li>
+                            <li><i class="fas fa-check"></i> Product Management Setup</li>
+                            <li><i class="fas fa-check"></i> Payment Gateway Integration</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO Setup</li>
+                            <li><i class="fas fa-check"></i> Social Media Integration</li>
+                            <li><i class="fas fa-check"></i> 6 Months Support</li>
+                            <li><i class="fas fa-check"></i> Staff Training</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-note">
+                <p>Need a custom solution? <a href="#contact">Contact me</a> for a personalized quote.</p>
+            </div>
+        </div>
+    </section>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Me</h2>
+                    <p>Ready to start your WordPress project? Let's talk!</p>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>Feel free to reach out with any questions about your WordPress project. I'm here to help turn your vision into reality.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Location</h4>
+                                    <p>Mumbai, Maharashtra, India</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p>contact@webcraft.in</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Phone</h4>
+                                    <p>+91 98765 43210</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary submit-btn">
+                                    <span class="btn-text">Send Message</span>
+                                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                                </button>
+                            </div>
+                            <div class="form-message" id="formMessage"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Build Your WordPress Website?</h2>
+                    <p>Let's create a stunning website that helps your business grow</p>
+                    <a href="#contact" class="btn btn-secondary">Start Your Project Today</a>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <a href="#" class="logo">
+                            <i class="fas fa-laptop-code logo-icon"></i>
+                            Web<span>Craft</span>
+                        </a>
+                        <p>Professional WordPress development services for businesses across India.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#process">Process</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-services">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#services">WordPress Design</a></li>
+                            <li><a href="#services">Theme Development</a></li>
+                            <li><a href="#services">Elementor Pro</a></li>
+                            <li><a href="#services">WooCommerce</a></li>
+                            <li><a href="#services">SEO Optimization</a></li>
+                            <li><a href="#services">Maintenance & Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe for the latest WordPress tips and news.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="copyright">
+                        &copy; 2025 WebCraft Studios. All Rights Reserved.
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+        <!-- Back to top button -->
+        <a href="#" class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    
+        <!-- Remaining CSS -->
+        <style>
+            /* Services Section */
+            .services-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
+    
+            .service-card {
+                background: white;
+                border-radius: 12px;
+                padding: 30px;
+                box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+                transition: var(--transition);
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
+                border: 1px solid rgba(0, 0, 0, 0.03);
+            }
+    
+            .service-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            }
+    
+            .service-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: rgba(43, 89, 195, 0.05);
+                border-radius: 50%;
+                transform: translate(50%, -50%);
+                z-index: -1;
+            }
+    
+            .service-icon {
+                width: 70px;
+                height: 70px;
+                background: var(--light);
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                color: var(--primary);
+                font-size: 28px;
+                transition: var(--transition);
+            }
+    
+            .service-card:hover .service-icon {
+                background: var(--primary);
+                color: white;
+            }
+    
+            .service-card h3 {
+                font-size: 20px;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+    
+            .service-card p {
+                color: var(--gray);
+                margin-bottom: 20px;
+            }
+    
+            .service-features {
+                list-style: none;
+            }
+    
+            .service-features li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                color: var(--dark);
+                font-size: 15px;
+            }
+    
+            .service-features li i {
+                color: var(--primary);
+                margin-right: 10px;
+                font-size: 14px;
+            }
+    
+            /* Portfolio Section */
+            .portfolio-filter {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 40px;
+            }
+    
+            .filter-btn {
+                padding: 8px 20px;
+                background: none;
+                border: 1px solid #e0e0e0;
+                border-radius: 30px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--gray);
+                transition: var(--transition);
+            }
+    
+            .filter-btn:hover, .filter-btn.active {
+                background: var(--primary);
+                color: white;
+                border-color: var(--primary);
+            }
+    
+            .portfolio-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 30px;
+            }
+    
+            .portfolio-item {
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+                transition: var(--transition);
+                position: relative;
+            }
+    
+            .portfolio-item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            }
+    
+            .portfolio-image {
+                position: relative;
+                overflow: hidden;
+                height: 250px;
+            }
+    
+            .portfolio-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s ease;
+            }
+    
+            .portfolio-item:hover .portfolio-image img {
+                transform: scale(1.1);
+            }
+    
+            .portfolio-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(43, 89, 195, 0.85);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: var(--transition);
+            }
+    
+            .portfolio-item:hover .portfolio-overlay {
+                opacity: 1;
+            }
+    
+            .portfolio-info {
+                text-align: center;
+                padding: 20px;
+                color: white;
+                transform: translateY(20px);
+                transition: all 0.4s ease;
+            }
+    
+            .portfolio-item:hover .portfolio-info {
+                transform: translateY(0);
+            }
+    
+            .portfolio-info h3 {
+                font-size: 20px;
+                margin-bottom: 5px;
+                font-weight: 600;
+            }
+    
+            .portfolio-info p {
+                font-size: 14px;
+                opacity: 0.8;
+                margin-bottom: 15px;
+            }
+    
+            .portfolio-link {
+                display: inline-block;
+                padding: 8px 20px;
+                background: white;
+                color: var(--primary);
+                text-decoration: none;
+                border-radius: 30px;
+                font-size: 14px;
+                font-weight: 500;
+                transition: var(--transition);
+            }
+    
+            .portfolio-link:hover {
+                background: var(--secondary);
+                color: white;
+            }
+    
+            .portfolio-cta {
+                margin-top: 50px;
+                text-align: center;
+            }
+    
+            /* Process Section */
+            .process-timeline {
+                position: relative;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+    
+            .process-timeline::before {
+                content: '';
+                position: absolute;
+                top: 40px;
+                bottom: 40px;
+                left: 50px;
+                width: 2px;
+                background: var(--light-gray);
+            }
+    
+            .process-step {
+                display: flex;
+                margin-bottom: 50px;
+                position: relative;
+            }
+    
+            .process-step:last-child {
+                margin-bottom: 0;
+            }
+    
+            .process-icon {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background: var(--light);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 32px;
+                color: var(--primary);
+                position: relative;
+                z-index: 1;
+                flex-shrink: 0;
+                margin-right: 30px;
+                transition: var(--transition);
+            }
+    
+            .process-step:hover .process-icon {
+                background: var(--primary);
+                color: white;
+            }
+    
+            .process-number {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: var(--secondary);
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                font-weight: 600;
+            }
+    
+            .process-content {
+                padding-top: 10px;
+            }
+    
+            .process-content h3 {
+                font-size: 22px;
+                margin-bottom: 10px;
+                font-weight: 600;
+            }
+    
+            .process-content p {
+                color: var(--gray);
+            }
+    
+            /* Testimonials Section */
+            .testimonials {
+                background: var(--light);
+            }
+    
+            .testimonials-slider {
+                max-width: 800px;
+                margin: 0 auto;
+                position: relative;
+            }
+    
+            .testimonial-item {
+                background: white;
+                border-radius: 12px;
+                padding: 40px;
+                box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+                display: none;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+    
+            .testimonial-item.active {
+                display: block;
+                opacity: 1;
+            }
+    
+            .testimonial-content {
+                position: relative;
+                margin-bottom: 30px;
+            }
+    
+            .quote-icon {
+                position: absolute;
+                top: -15px;
+                left: -15px;
+                font-size: 60px;
+                color: rgba(43, 89, 195, 0.1);
+                z-index: 0;
+            }
+    
+            .testimonial-content p {
+                position: relative;
+                z-index: 1;
+                font-style: italic;
+                line-height: 1.8;
+            }
+    
+            .testimonial-author {
+                display: flex;
+                align-items: center;
+            }
+    
+            .testimonial-image {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: 15px;
+            }
+    
+            .testimonial-info h4 {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+    
+            .testimonial-info p {
+                color: var(--gray);
+                font-size: 14px;
+            }
+    
+            .testimonial-controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 30px;
+            }
+    
+            .testimonial-prev, .testimonial-next {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: white;
+                border: none;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+    
+            .testimonial-prev:hover, .testimonial-next:hover {
+                background: var(--primary);
+                color: white;
+            }
+    
+            .testimonial-dots {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin: 0 20px;
+            }
+    
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #d9d9d9;
+                cursor: pointer;
+                transition: var(--transition);
+            }
+    
+            .dot.active {
+                background: var(--primary);
+                transform: scale(1.2);
+            }
+    
+            /* Pricing Section */
+            .pricing-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                margin-bottom: 30px;
+            }
+    
+            .pricing-card {
+                background: white;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+                transition: var(--transition);
+                position: relative;
+                border: 1px solid rgba(0, 0, 0, 0.03);
+            }
+    
+            .pricing-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            }
+    
+            .pricing-card.featured {
+                border: 2px solid var(--primary);
+                transform: scale(1.05);
+            }
+    
+            .pricing-card.featured:hover {
+                transform: scale(1.05) translateY(-10px);
+            }
+    
+            .featured-label {
+                position: absolute;
+                top: 20px;
+                right: -30px;
+                background: var(--secondary);
+                color: white;
+                font-size: 12px;
+                font-weight: 600;
+                padding: 5px 30px;
+                transform: rotate(45deg);
+            }
+    
+            .pricing-header {
+                background: var(--light);
+                padding: 30px;
+                text-align: center;
+            }
+    
+            .pricing-header h3 {
+                font-size: 22px;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+    
+            .pricing-price {
+                font-size: 40px;
+                font-weight: 700;
+                color: var(--primary);
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+    
+            .currency {
+                font-size: 24px;
+                margin-right: 5px;
+                align-self: flex-start;
+                margin-top: 8px;
+            }
+    
+            .pricing-header p {
+                color: var(--gray);
+                font-size: 14px;
+            }
+    
+            .pricing-features {
+                padding: 30px;
+            }
+    
+            .pricing-features ul {
+                list-style: none;
+            }
+    
+            .pricing-features li {
+                padding: 10px 0;
+                border-bottom: 1px solid #f2f2f2;
+                display: flex;
+                align-items: center;
+            }
+    
+            .pricing-features li:last-child {
+                border-bottom: none;
+            }
+    
+            .pricing-features li i {
+                margin-right: 10px;
+                font-size: 14px;
+            }
+    
+            .pricing-features li .fa-check {
+                color: var(--success);
+            }
+    
+            .pricing-features li .fa-times {
+                color: var(--gray);
+            }
+    
+            .pricing-features .not-included {
+                color: var(--gray);
+                text-decoration: line-through;
+                opacity: 0.7;
+            }
+    
+            .pricing-footer {
+                padding: 20px 30px 30px;
+                text-align: center;
+            }
+    
+            .pricing-note {
+                text-align: center;
+                color: var(--gray);
+            }
+    
+            .pricing-note a {
+                color: var(--primary);
+                text-decoration: none;
+                font-weight: 500;
+            }
+    
+            /* Contact Section */
+            .contact-container {
+                display: grid;
+                grid-template-columns: 1fr 1.5fr;
+                gap: 50px;
+                background: white;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            }
+    
+            .contact-info {
+                background: var(--primary);
+                color: white;
+                padding: 50px;
+            }
+    
+            .contact-info h3 {
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+    
+            .contact-info p {
+                margin-bottom: 30px;
+                opacity: 0.9;
+            }
+    
+            .contact-details {
+                margin-bottom: 40px;
+            }
+    
+            .contact-item {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+    
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                font-size: 20px;
+            }
+    
+            .contact-text h4 {
+                margin-bottom: 5px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+    
+            .social-links {
+                display: flex;
+                gap: 15px;
+            }
+    
+            .social-link {
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                transition: var(--transition);
+            }
+    
+            .social-link:hover {
+                background: white;
+                color: var(--primary);
+            }
+    
+            .contact-form-container {
+                padding: 50px;
+            }
+    
+            .contact-form {
+                display: grid;
+                gap: 20px;
+            }
+    
+            .form-group {
+                position: relative;
+            }
+    
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 500;
+                font-size: 14px;
+            }
+    
+            .contact-form input, .contact-form textarea {
+                width: 100%;
+                padding: 12px 15px;
+                border: 1px solid #e0e0e0;
+                border-radius: var(--border-radius);
+                font-size: 15px;
+                transition: var(--transition);
+            }
+    
+            .contact-form input:focus, .contact-form textarea:focus {
+                outline: none;
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(43, 89, 195, 0.1);
+            }
+    
+            .submit-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                cursor: pointer;
+            }
+    
+            .btn-icon {
+                transition: transform 0.3s ease;
+            }
+    
+            .submit-btn:hover .btn-icon {
+                transform: translateX(5px);
+            }
+    
+            .form-message {
+                padding: 10px;
+                border-radius: var(--border-radius);
+                text-align: center;
+                font-size: 14px;
+                display: none;
+            }
+    
+            .form-message.success {
+                background: rgba(76, 175, 80, 0.1);
+                color: var(--success);
+                display: block;
+            }
+    
+            .form-message.error {
+                background: rgba(244, 67, 54, 0.1);
+                color: var(--danger);
+                display: block;
+            }
+    
+            /* CTA Section */
+            .cta-section {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+                padding: 80px 0;
+                color: white;
+                text-align: center;
+            }
+    
+            .cta-content h2 {
+                font-size: 32px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+    
+            .cta-content p {
+                font-size: 18px;
+                opacity: 0.9;
+                margin-bottom: 30px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+    
+            /* Footer */
+            .footer {
+                background: var(--dark);
+                color: white;
+                padding: 80px 0 40px;
+            }
+    
+            .footer-content {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 50px;
+                margin-bottom: 50px;
+            }
+    
+            .footer-logo {
+                display: flex;
+                flex-direction: column;
+            }
+    
+            .footer-logo .logo {
+                color: white;
+                margin-bottom: 20px;
+            }
+    
+            .footer-logo p {
+                opacity: 0.8;
+                font-size: 14px;
+            }
+    
+            .footer h3 {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 20px;
+                position: relative;
+                padding-bottom: 10px;
+            }
+    
+            .footer h3::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 40px;
+                height: 3px;
+                background: var(--secondary);
+                border-radius: 2px;
+            }
+    
+            .footer-links ul, .footer-services ul {
+                list-style: none;
+            }
+    
+            .footer-links li, .footer-services li {
+                margin-bottom: 10px;
+            }
+    
+            .footer-links a, .footer-services a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                transition: var(--transition);
+                display: inline-block;
+            }
+    
+            .footer-links a:hover, .footer-services a:hover {
+                color: white;
+                padding-left: 5px;
+            }
+    
+            .footer-newsletter p {
+                opacity: 0.8;
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+    
+            .newsletter-form {
+                display: flex;
+                height: 44px;
+            }
+    
+            .newsletter-form input {
+                flex: 1;
+                padding: 0 15px;
+                border: none;
+                border-radius: var(--border-radius) 0 0 var(--border-radius);
+                font-size: 14px;
+            }
+    
+            .newsletter-form input:focus {
+                outline: none;
+            }
+    
+            .newsletter-form button {
+                background: var(--secondary);
+                color: white;
+                border: none;
+                border-radius: 0 var(--border-radius) var(--border-radius) 0;
+                padding: 0 15px;
+                cursor: pointer;
+                transition: var(--transition);
+            }
+    
+            .newsletter-form button:hover {
+                background: #e66234;
+            }
+    
+            .footer-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 30px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+    
+            .copyright {
+                font-size: 14px;
+                opacity: 0.8;
+            }
+    
+            .footer-social {
+                display: flex;
+                gap: 15px;
+            }
+    
+            /* Back to top button */
+            .back-to-top {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                background: var(--primary);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+    
+            .back-to-top.visible {
+                opacity: 1;
+                visibility: visible;
+            }
+    
+            .back-to-top:hover {
+                background: var(--primary-dark);
+                transform: translateY(-5px);
+            }
+    
+            /* Responsive */
+            @media (max-width: 1100px) {
+                .hero h1 {
+                    font-size: 2.5rem;
+                }
+                
+                .hero-image {
+                    max-width: 45%;
+                }
+            }
+    
+            @media (max-width: 992px) {
+                .nav-links {
+                    display: none;
+                }
+                
+                .hamburger {
+                    display: block;
+                }
+                
+                .hero {
+                    padding: 140px 0 80px;
+                }
+                
+                .hero-content {
+                    max-width: 100%;
+                    text-align: center;
+                }
+                
+                .hero-buttons {
+                    justify-content: center;
+                }
+                
+                .hero-stats {
+                    justify-content: center;
+                }
+                
+                .hero-image {
+                    display: none;
+                }
+                
+                .contact-container {
+                    grid-template-columns: 1fr;
+                }
+            }
+    
+            @media (max-width: 768px) {
+                .section {
+                    padding: 60px 0;
+                }
+                
+                .section-title h2 {
+                    font-size: 2rem;
+                }
+                
+                .hero h1 {
+                    font-size: 2.2rem;
+                }
+                
+                .process-timeline::before {
+                    left: 30px;
+                }
+                
+                .process-icon {
+                    width: 60px;
+                    height: 60px;
+                    font-size: 22px;
+                }
+                
+                .process-number {
+                    width: 25px;
+                    height: 25px;
+                    font-size: 12px;
+                }
+                
+                .process-content h3 {
+                    font-size: 18px;
+                }
+                
+                .footer-content {
+                    gap: 30px;
+                }
+            }
+    
+            @media (max-width: 576px) {
+                .hero h1 {
+                    font-size: 2rem;
+                }
+                
+                .btn {
+                    padding: 10px 20px;
+                    font-size: 14px;
+                }
+                
+                .hero-buttons {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                
+                .section-title h2 {
+                    font-size: 1.8rem;
+                }
+                
+                .hero-stats {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                
+                .testimonial-item {
+                    padding: 25px;
+                }
+                
+                .pricing-card.featured {
+                    transform: scale(1);
+                }
+                
+                .pricing-card.featured:hover {
+                    transform: translateY(-10px);
+                }
+                
+                .footer-bottom {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                
+                .footer-content {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    
+        <!-- JavaScript -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Mobile Navigation
+                const hamburger = document.getElementById('hamburger');
+                const mobileNav = document.getElementById('mobileNav');
+                const mobileNavClose = document.getElementById('mobileNavClose');
+                const header = document.getElementById('header');
+                const backToTopBtn = document.getElementById('backToTop');
+                
+                // Counter animation
+                const projectsCount = document.getElementById('projectsCount');
+                const clientsCount = document.getElementById('clientsCount');
+                const experienceCount = document.getElementById('experienceCount');
+                
+                // Testimonials slider
+                const testimonialItems = document.querySelectorAll('.testimonial-item');
+                const testimonialDots = document.querySelectorAll('.dot');
+                const prevBtn = document.getElementById('testimonialPrev');
+                const nextBtn = document.getElementById('testimonialNext');
+                
+                // Portfolio filter
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                const portfolioItems = document.querySelectorAll('.portfolio-item');
+                
+                // Contact form
+                const contactForm = document.getElementById('contactForm');
+                const formMessage = document.getElementById('formMessage');
+                
+                // Mobile Navigation Toggle
+                hamburger.addEventListener('click', function() {
+                    this.classList.toggle('open');
+                    mobileNav.classList.toggle('open');
+                    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+                });
+                
+                mobileNavClose.addEventListener('click', function() {
+                    hamburger.classList.remove('open');
+                    mobileNav.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+                
+                // Smooth scrolling for nav links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Close mobile nav if open
+                        if (mobileNav.classList.contains('open')) {
+                            hamburger.classList.remove('open');
+                            mobileNav.classList.remove('open');
+                            document.body.style.overflow = '';
+                        }
+                        
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                // Scroll events
+                window.addEventListener('scroll', function() {
+                    // Header shadow on scroll
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    
+                    // Show/hide back to top button
+                    if (window.scrollY > 500) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                    
+                    // Animate counters when in view
+                    const counters = [
+                        { element: projectsCount, target: 150 },
+                        { element: clientsCount, target: 85 },
+                        { element: experienceCount, target: 7 }
+                    ];
+                    
+                    counters.forEach(counter => {
+                        if (isInViewport(counter.element) && !counter.element.classList.contains('counted')) {
+                            counter.element.classList.add('counted');
+                            animateCounter(counter.element, counter.target);
+                        }
+                    });
+                });
+                
+                // Back to Top
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Testimonial slider
+                let currentSlide = 0;
+                
+                function showSlide(index) {
+                    testimonialItems.forEach(item => item.classList.remove('active'));
+                    testimonialDots.forEach(dot => dot.classList.remove('active'));
+                    
+                    testimonialItems[index].classList.add('active');
+                    testimonialDots[index].classList.add('active');
+                    currentSlide = index;
+                }
+                
+                nextBtn.addEventListener('click', function() {
+                    currentSlide = (currentSlide + 1) % testimonialItems.length;
+                    showSlide(currentSlide);
+                });
+                
+                prevBtn.addEventListener('click', function() {
+                    currentSlide = (currentSlide - 1 + testimonialItems.length) % testimonialItems.length;
+                    showSlide(currentSlide);
+                });
+                
+                testimonialDots.forEach((dot, index) => {
+                    dot.addEventListener('click', function() {
+                        showSlide(index);
+                    });
+                });
+                
+                // Auto slide testimonials
+                setInterval(function() {
+                    nextBtn.click();
+                }, 5000);
+                
+                // Portfolio filtering
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        filterBtns.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const filterValue = this.getAttribute('data-filter');
+                        
+                        portfolioItems.forEach(item => {
+                            const category = item.getAttribute('data-category');
+                            
+                            if (filterValue === 'all' || filterValue === category) {
+                                item.style.display = 'block';
+                                setTimeout(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'scale(1)';
+                                }, 100);
+                            } else {
+                                item.style.opacity = '0';
+                                item.style.transform = 'scale(0.8)';
+                                setTimeout(() => {
+                                    item.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                    });
+                });
+                
+                // Contact form submission
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Simple validation
+                    if (!name || !email || !subject || !message) {
+                        showFormMessage('Please fill in all fields', 'error');
+                        return;
+                    }
+                    
+                    // Simulate form submission (would be replaced with actual AJAX in production)
+                    const submitBtn = contactForm.querySelector('.submit-btn');
+                    const btnText = submitBtn.querySelector('.btn-text');
+                    const originalText = btnText.textContent;
+                    
+                    btnText.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        showFormMessage('Thank you! Your message has been sent successfully.', 'success');
+                        contactForm.reset();
+                        btnText.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+                
+                // Helper Functions
+                function animateCounter(element, target) {
+                    let start = 0;
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    
+                    function updateCounter(currentTime) {
+                        const elapsedTime = currentTime - startTime;
+                        
+                        if (elapsedTime < duration) {
+                            const progress = elapsedTime / duration;
+                            const value = Math.floor(progress * target);
+                            element.textContent = value;
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            element.textContent = target;
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateCounter);
+                }
+                
+                function isInViewport(element) {
+                    const rect = element.getBoundingClientRect();
+                    return (
+                        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.bottom >= 0
+                    );
+                }
+                
+                function showFormMessage(message, type) {
+                    formMessage.textContent = message;
+                    formMessage.className = `form-message ${type}`;
+                    
+                    setTimeout(() => {
+                        formMessage.className = 'form-message';
+                    }, 5000);
+                }
+            });
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "image_extractor.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "image_extractor.py"
+      }
+    ],
+    "env": {
+      "API_KEY": "algsoch"
+    }
+  }

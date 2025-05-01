@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Professional Profile</title>
+    <style>
+        :root {
+            --primary: #4a6bdf;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #4a6bdf 0%, #5d7ce4 100%);
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+
+        .profile-bg {
+            height: 80px;
+            background: linear-gradient(to right, #3a4ed5, #8172d5);
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            position: absolute;
+            bottom: -50px;
+            left: 20px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-img i {
+            font-size: 48px;
+            color: var(--primary);
+        }
+
+        .profile-info {
+            padding: 60px 20px 20px;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .profile-titles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .profile-title {
+            background-color: rgba(74, 107, 223, 0.1);
+            color: var(--primary);
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .profile-bio {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.08);
+            margin: 15px 0;
+        }
+
+        .interaction-area {
+            padding: 0 20px 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--dark);
+            background-color: #f0f2f5;
+        }
+
+        .btn:hover {
+            background-color: #e4e6e9;
+        }
+
+        .btn.active {
+            background-color: rgba(74, 107, 223, 0.1);
+            color: var(--primary);
+        }
+
+        .btn-like.liked {
+            color: var(--primary);
+            background-color: rgba(74, 107, 223, 0.1);
+        }
+
+        .btn-dislike.disliked {
+            color: var(--danger);
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        .btn i {
+            font-size: 18px;
+        }
+
+        .counts {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .comment-form {
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            resize: none;
+            transition: all 0.2s;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 107, 223, 0.1);
+        }
+
+        .send-btn {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .send-btn:hover {
+            background-color: #3a58c8;
+        }
+
+        .comments-section {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .comment {
+            padding: 12px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .comment:last-child {
+            margin-bottom: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(calc(100% + 40px));
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification i {
+            font-size: 20px;
+        }
+
+        .notification.success i {
+            color: var(--success);
+        }
+
+        .notification.error i {
+            color: var(--danger);
+        }
+
+        .notification-message {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* For scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* For mobile responsiveness */
+        @media (max-width: 576px) {
+            .card {
+                border-radius: 12px;
+            }
+            
+            .profile-img {
+                width: 80px;
+                height: 80px;
+                bottom: -40px;
+            }
+            
+            .profile-info {
+                padding-top: 50px;
+            }
+            
+            .profile-name {
+                font-size: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="card">
+        <div class="profile-bg">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+        
+        <div class="profile-info">
+            <h1 class="profile-name">Vicky Kumar</h1>
+            <div class="profile-titles">
+                <span class="profile-title">AI Engineer</span>
+                <span class="profile-title">Prompt Engineer</span>
+                <span class="profile-title">ML Engineer</span>
+                <span class="profile-title">Software Developer</span>
+            </div>
+            <p class="profile-bio">Building the future with AI and machine learning. Passionate about innovative technology solutions that transform how we live and work.</p>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="interaction-area">
+            <div class="buttons">
+                <button class="btn btn-like" id="likeBtn">
+                    <i class="far fa-thumbs-up"></i>
+                    <span>Like</span>
+                </button>
+                <button class="btn btn-dislike" id="dislikeBtn">
+                    <i class="far fa-thumbs-down"></i>
+                    <span>Dislike</span>
+                </button>
+                <button class="btn btn-comment" id="commentBtn">
+                    <i class="far fa-comment"></i>
+                    <span>Comment</span>
+                </button>
+            </div>
+            
+            <div class="counts">
+                <span id="likesCount">0 likes</span>
+                <span id="commentsCount">0 comments</span>
+            </div>
+            
+            <div class="comment-form" id="commentForm" style="display: none;">
+                <textarea class="comment-input" id="commentInput" placeholder="Write a comment..." rows="3"></textarea>
+                <button class="send-btn" id="sendCommentBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <div class="comments-section" id="commentsSection">
+                <!-- Comments will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span class="notification-message">Action successful!</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const likeBtn = document.getElementById('likeBtn');
+            const dislikeBtn = document.getElementById('dislikeBtn');
+            const commentBtn = document.getElementById('commentBtn');
+            const commentForm = document.getElementById('commentForm');
+            const commentInput = document.getElementById('commentInput');
+            const sendCommentBtn = document.getElementById('sendCommentBtn');
+            const commentsSection = document.getElementById('commentsSection');
+            const likesCount = document.getElementById('likesCount');
+            const commentsCount = document.getElementById('commentsCount');
+            const notification = document.getElementById('notification');
+            
+            // State
+            let liked = false;
+            let disliked = false;
+            let likes = 0;
+            let comments = 0;
+            
+            // Functions
+            function showNotification(message, type = 'success') {
+                const icon = notification.querySelector('i');
+                const messageEl = notification.querySelector('.notification-message');
+                
+                icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+                notification.className = type === 'success' ? 'notification success show' : 'notification error show';
+                
+                messageEl.textContent = message;
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            function updateLikesCount() {
+                likesCount.textContent = `${likes} ${likes === 1 ? 'like' : 'likes'}`;
+            }
+            
+            function updateCommentsCount() {
+                commentsCount.textContent = `${comments} ${comments === 1 ? 'comment' : 'comments'}`;
+            }
+            
+            // Event Listeners
+            likeBtn.addEventListener('click', function() {
+                if (disliked) {
+                    disliked = false;
+                    dislikeBtn.classList.remove('disliked');
+                    dislikeBtn.querySelector('i').className = 'far fa-thumbs-down';
+                }
+                
+                if (!liked) {
+                    liked = true;
+                    likes++;
+                    likeBtn.classList.add('liked');
+                    likeBtn.querySelector('i').className = 'fas fa-thumbs-up';
+                    showNotification('You liked this profile!');
+                } else {
+                    liked = false;
+                    likes--;
+                    likeBtn.classList.remove('liked');
+                    likeBtn.querySelector('i').className = 'far fa-thumbs-up';
+                    showNotification('You removed your like');
+                }
+                
+                updateLikesCount();
+            });
+            
+            dislikeBtn.addEventListener('click', function() {
+                if (liked) {
+                    liked = false;
+                    likes--;
+                    likeBtn.classList.remove('liked');
+                    likeBtn.querySelector('i').className = 'far fa-thumbs-up';
+                    updateLikesCount();
+                }
+                
+                if (!disliked) {
+                    disliked = true;
+                    dislikeBtn.classList.add('disliked');
+                    dislikeBtn.querySelector('i').className = 'fas fa-thumbs-down';
+                    showNotification('You disliked this profile', 'error');
+                } else {
+                    disliked = false;
+                    dislikeBtn.classList.remove('disliked');
+                    dislikeBtn.querySelector('i').className = 'far fa-thumbs-down';
+                    showNotification('You removed your dislike');
+                }
+            });
+            
+            commentBtn.addEventListener('click', function() {
+                commentForm.style.display = commentForm.style.display === 'none' ? 'block' : 'none';
+                if (commentForm.style.display === 'block') {
+                    commentInput.focus();
+                    commentBtn.classList.add('active');
+                } else {
+                    commentBtn.classList.remove('active');
+                }
+            });
+            
+            sendCommentBtn.addEventListener('click', function() {
+                const commentText = commentInput.value.trim();
+                
+                if (commentText) {
+                    // Create new comment element
+                    const commentEl = document.createElement('div');
+                    commentEl.className = 'comment';
+                    commentEl.textContent = commentText;
+                    
+                    // Add to comments section
+                    commentsSection.prepend(commentEl);
+                    
+                    // Increment comments count
+                    comments++;
+                    updateCommentsCount();
+                    
+                    // Clear input
+                    commentInput.value = '';
+                    
+                    // Show notification
+                    showNotification('Comment added successfully!');
+                } else {
+                    showNotification('Please enter a comment', 'error');
+                }
+            });
+            
+            // Allow enter key to submit comment
+            commentInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendCommentBtn.click();
+                }
+            });
+            
+            // Initialize counters
+            updateLikesCount();
+            updateCommentsCount();
+        });
+    </script>
+</body>
+</html>
